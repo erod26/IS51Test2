@@ -28,8 +28,51 @@ export class TestScoreComponent implements OnInit {
     private toastService: ToastService
   ) { }
 
+  //On traversing to this page
   async ngOnInit() {
-
+    const tests = JSON.parse(localStorage.getItem('tests'));
+    if(tests && tests.length > 0) {
+      this.tests = tests;
+    } else {
+      this.tests = await this.loadGradesFromJson();
+    }
   }
 
-}
+  //loading grades from the file
+  async loadGradesFromJson() {
+    const tests = await this.http.get('assets/tests.json').toPromise();
+    return tests.json();
+  }
+
+    //Adding, saving, and deleting tests
+    addTest() {
+      const testForm: ITest = {
+        id: null,
+        testName: null,
+        pointsPossible: null,
+        pointsReceived: null,
+        percentage: null,
+        grade: null,
+      }
+      this.tests.unshift(testForm);
+      localStorage.setItem('tests', JSON.stringify(this.tests));
+    }
+
+    saveTest() {
+      localStorage.setItem('tests', JSON.stringify(this.tests));
+      this.toastService.showToast('success', 2000, 'Saved.')
+    }
+
+    deleteTest(index: number) {
+      this.tests.splice(index, 1);
+      this.saveTest();
+    }
+
+    //get final grade
+    computeGrade() {
+     
+    }
+
+    
+    
+  }
