@@ -14,4 +14,22 @@ export class MainNavComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Created the buttons for going places.
+  showAbout() {
+    this.toastService.showToast('danger', 2000, "This application was made by Eric Rodriguez. (C) 2018")
+  }
+  goHome() {
+    this.router.navigate(['home']);
+  }
+  goTest() {
+    this.router.navigate(['my-tests']);
+  }
+  goWhoa() {
+    this.toastService.showToast('success', 1000, "Refreshing!");
+  }
+
+
+
+
+  
 }
