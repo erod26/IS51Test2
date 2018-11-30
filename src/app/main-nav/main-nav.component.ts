@@ -16,7 +16,7 @@ export class MainNavComponent implements OnInit {
 
   //Created the buttons for going places.
   showAbout() {
-    this.toastService.showToast('danger', 2000, "This application was made by Eric Rodriguez. (C) 2018")
+    this.toastService.showToast('danger', 2000, "This application is designed by Eric Rodriguez. (C) 2018")
   }
   goHome() {
     this.router.navigate(['home']);

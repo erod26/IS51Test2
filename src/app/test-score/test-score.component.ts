@@ -57,7 +57,7 @@ export class TestScoreComponent implements OnInit {
       this.tests.unshift(testForm);
       localStorage.setItem('tests', JSON.stringify(this.tests));
     }
-    
+
     saveTest() {
       localStorage.setItem('tests', JSON.stringify(this.tests));
       this.toastService.showToast('success', 2000, 'Saved.')
@@ -68,5 +68,11 @@ export class TestScoreComponent implements OnInit {
       this.saveTest();
     }
 
+    //get final grade
+    computeGrade() {
+     
+    }
+
+    
     
   }
